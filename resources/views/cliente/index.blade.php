@@ -37,6 +37,7 @@
                                         <th>No. Cuenta</th>
 										<th>Nombre</th>
 										<th>Apellido</th>
+                                        <th>Dpi</th>
 										<th>Direccion</th>
 										<th>Correo</th>
 										<th>Telefono</th>
@@ -51,6 +52,7 @@
                                             <td>{{ $cliente->id }}</td>
 											<td>{{ $cliente->nombre_cliente }}</td>
 											<td>{{ $cliente->apellido_cliente }}</td>
+                                            <td>{{ $cliente->dpi_cliente }}</td>
 											<td>{{ $cliente->direccion_cliente }}</td>
 											<td>{{ $cliente->correo_cliente }}</td>
 											<td>{{ $cliente->telefono_cliente }}</td>

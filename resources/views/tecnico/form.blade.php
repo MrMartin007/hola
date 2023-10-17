@@ -1,30 +1,37 @@
 <div class="box box-info padding-1">
     <div class="box-body">
-        
-        <div class="form-group">
+
+        <div class="form-row">
+            <div class="col-md-5 mb-4 ">
             {{ Form::label('nombre_tecnico') }}
             {{ Form::text('nombre_tecnico', $tecnico->nombre_tecnico, ['class' => 'form-control' . ($errors->has('nombre_tecnico') ? ' is-invalid' : ''), 'placeholder' => 'Nombre Tecnico']) }}
             {!! $errors->first('nombre_tecnico', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-        <div class="form-group">
+            <div class="col-md-5 mb-4 ">
             {{ Form::label('apellido_tecnico') }}
             {{ Form::text('apellido_tecnico', $tecnico->apellido_tecnico, ['class' => 'form-control' . ($errors->has('apellido_tecnico') ? ' is-invalid' : ''), 'placeholder' => 'Apellido Tecnico']) }}
             {!! $errors->first('apellido_tecnico', '<div class="invalid-feedback">:message</div>') !!}
+            </div>
         </div>
-        <div class="form-group">
+        <div class="form-row">
+            <div class="col-md-5 mb-4 ">
             {{ Form::label('direccion_tecnico') }}
             {{ Form::text('direccion_tecnico', $tecnico->direccion_tecnico, ['class' => 'form-control' . ($errors->has('direccion_tecnico') ? ' is-invalid' : ''), 'placeholder' => 'Direccion Tecnico']) }}
             {!! $errors->first('direccion_tecnico', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-        <div class="form-group">
+            <div class="col-md-5 mb-4 ">
+            {{ Form::label('telefono_tecnico') }}
+            {{ Form::text('telefono_tecnico', $tecnico->telefono_tecnico, ['class' => 'form-control' . ($errors->has('telefono_tecnico') ? ' is-invalid' : ''), 'placeholder' => 'Telefono Tecnico']) }}
+            {!! $errors->first('telefono_tecnico', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-10 mb-4 ">
             {{ Form::label('correo_tecnico') }}
             {{ Form::text('correo_tecnico', $tecnico->correo_tecnico, ['class' => 'form-control' . ($errors->has('correo_tecnico') ? ' is-invalid' : ''), 'placeholder' => 'Correo Tecnico']) }}
             {!! $errors->first('correo_tecnico', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-        <div class="form-group">
-            {{ Form::label('telefono_tecnico') }}
-            {{ Form::text('telefono_tecnico', $tecnico->telefono_tecnico, ['class' => 'form-control' . ($errors->has('telefono_tecnico') ? ' is-invalid' : ''), 'placeholder' => 'Telefono Tecnico']) }}
-            {!! $errors->first('telefono_tecnico', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
     </div>

@@ -17,6 +17,7 @@ class CreateClientesTable extends Migration
             $table->bigIncrements('id');
             $table->string('nombre_cliente');
             $table->string('apellido_cliente');
+            $table->string('dpi_cliente');
             $table->string('direccion_cliente');
             $table->string('correo_cliente');
             $table->string('telefono_cliente');

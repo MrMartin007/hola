@@ -32,6 +32,10 @@
                             {{ $cliente->apellido_cliente }}
                         </div>
                         <div class="form-group">
+                            <strong>Dpi Cliente:</strong>
+                            {{ $cliente->dpi_cliente }}
+                        </div>
+                        <div class="form-group">
                             <strong>Direccion Cliente:</strong>
                             {{ $cliente->direccion_cliente }}
                         </div>

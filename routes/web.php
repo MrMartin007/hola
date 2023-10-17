@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ServicioController;
 use App\Http\Controllers\TecnicoController;
+use App\Http\Controllers\AsignarServicioController;
+
 
 
 /*
@@ -18,7 +20,7 @@ use App\Http\Controllers\TecnicoController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Auth::routes();
@@ -29,4 +31,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('clientes', ClienteController::class);
 Route::resource('servicios', ServicioController::class);
 Route::resource('tecnicos', TecnicoController::class);
+Route::resource('asignar-servicios', AsignarServicioController::class);
+Route::get('/edit2/{id}', [AsignarServicioController::class,'edit2'])->name('edit2');
+Route::get('/index_asig', [AsignarServicioController::class,'index_asig'])->name('index_asig');
+
 

@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property $id
  * @property $nombre_cliente
  * @property $apellido_cliente
+ * @property $dpi_cliente
  * @property $direccion_cliente
  * @property $correo_cliente
  * @property $telefono_cliente
@@ -22,14 +23,16 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Cliente extends Model
 {
-    
+
     static $rules = [
 		'nombre_cliente' => 'required',
 		'apellido_cliente' => 'required',
+        'dpi_cliente' => 'required',
 		'direccion_cliente' => 'required',
 		'correo_cliente' => 'required',
 		'telefono_cliente' => 'required',
 		'nit_cliente' => 'required',
+
     ];
 
     protected $perPage = 20;
@@ -39,7 +42,7 @@ class Cliente extends Model
      *
      * @var array
      */
-    protected $fillable = ['nombre_cliente','apellido_cliente','direccion_cliente','correo_cliente','telefono_cliente','nit_cliente'];
+    protected $fillable = ['nombre_cliente','apellido_cliente','dpi_cliente','direccion_cliente','correo_cliente','telefono_cliente','nit_cliente'];
 
 
 

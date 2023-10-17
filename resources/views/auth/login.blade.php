@@ -1,73 +1,52 @@
-@extends('layouts.app')
+@extends('layouts.appp')
+
+@section('title', 'Login')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+    <style>
+        body {
+            background-color: black;
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
+        }
+        .m{
+       margin-left: 25%;
+            width: 50%;
+            height: 50%;
 
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+        }
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+    </style>
 
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+    <div style="background: rgba(255, 255, 255, 0.6) "
+          class="block mx-auto my-12 p-8  w-1/3 border border-gray-200
+    round-lg shadow-lg" >
+        <h1 class="text-3xl text-center font-bold">INICAR SESION</h1>
+        <div class="ima" >
+            <img class="m offset-2" src=" https://cdn-icons-png.flaticon.com/512/1000/1000946.png">
         </div>
+
+        <form method="POST" action="{{ route('login') }}">
+            @csrf
+
+            <input type="email" class="border border-gray-200 rounded-md bg-gray-200 w-full
+            text-lg placeholder-gray-900 p-2 my-2 focus:bg-white" placeholder="Email" id="email" name="email">
+
+            <input type="password" class="border border-gray-200 rounded-md bg-gray-200 w-full
+            text-lg placeholder-gray-900 p-2 my-2 focus:bg-white" placeholder="Password" id="password" name="password">
+
+            @error('message')
+
+            <p class="border border-red-500 rounded-md bg-red-100 w-full
+            text-red-600 p-2 my-2">El correo y la contraseña son requeridos</p>
+            @enderror
+
+
+            <button type="submit" class="rounded-md bg-indigo-500 w-full text-lg
+            text-white font-semibold p-2 my-3 hover:bg-indigo-600">Registrar</button>
+        </form>
     </div>
-</div>
+
 @endsection
+
+

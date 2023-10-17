@@ -316,13 +316,9 @@ return [
             'text'    => 'Servicios',
             'icon'    => ' fa fa-tags',
             'submenu' => [
+
                 [
-                    'text' => 'Registrar Servicio',
-                    'url'  => '/servicios/create',
-                    'icon'    => 'fa fa-tag',
-                ],
-                [
-                    'text' => 'Servicios Registrados',
+                    'text' => 'Servicios Disponibles',
                     'url'  => '/servicios',
                     'icon'    => 'fa fa-list',
 
@@ -349,17 +345,23 @@ return [
 
         ],
         [
-            'text'    => 'Marcas',
+            'text'    => 'Asignar Servicio',
             'icon'    => 'fa  fa-registered',
             'submenu' => [
                 [
-                    'text' => 'Ingresar Marcas',
-                    'url'  => '/marcas/create',
+                    'text' => 'Ingresar',
+                    'url'  => '/asignar-servicios/create',
                     'icon'    => 'fa fa-plus-circle',
                 ],
                 [
-                    'text' => 'Marcas Registrados',
-                    'url'  => '/marcas',
+                    'text' => ' Registrados',
+                    'url'  => '/asignar-servicios',
+                    'icon'    => 'fa fa-list',
+
+                ],
+                [
+                    'text' => ' Tecnicos Asignados',
+                    'url'  => '/index_asig',
                     'icon'    => 'fa fa-list',
 
                 ],
@@ -367,26 +369,8 @@ return [
 
         ],
         [
-            'text'    => 'Empleados',
-            'icon'    => 'fa fa-user-tie',
-            'submenu' => [
-                [
-                    'text' => 'Ingresar Empleado',
-                    'url'  => '/empleados/create',
-                    'icon'    => 'fa fa-user-plus',
-                ],
-                [
-                    'text' => 'Empleados Registrados',
-                    'url'  => '/empleados',
-                    'icon'    => 'fa fa-list',
-
-                ],
-            ],
-
-        ],
-        [
-            'text'    => 'Reporte de Ventas',
-            'icon'    => 'fa fa-user-tie',
+            'text'    => 'Reportes',
+            'icon'    => 'fa fa-list',
             'submenu' => [
                 [
                     'text' => 'Ventas',

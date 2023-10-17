@@ -2,7 +2,7 @@
 @section('title', 'Dashboard')
 
 @section('template_title')
-    {{ __('Create') }} Tecnico
+    {{ __('Create') }} Asignar Tecnico
 @endsection
 
 @section('content')
@@ -12,24 +12,24 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="card shadow-lg p-3 mb-5 bg-white ">
-                        <div class="card-header">Registrar Nuevo Tecnico</div>
+                        <div class="card-header">Asignar Tecnico a Servicio</div>
                         <div class="card-body">
 
                 @includeif('partials.errors')
-
                     <div class="card-body">
-                        <form method="POST" action="{{ route('tecnicos.store') }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('asignar-servicios.update', $asignarServicio->id) }}"  role="form" enctype="multipart/form-data">
+                            {{ method_field('PATCH') }}
                             @csrf
 
-                            @include('tecnico.form')
+                            @include('asignar-servicio.form2')
 
                         </form>
                     </div>
                 </div>
             </div>
         </div>
+                </div>
             </div>
-        </div>
         </div>
     </section>
 @endsection
