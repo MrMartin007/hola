@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cliente;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class ClienteController
@@ -106,4 +107,24 @@ class ClienteController extends Controller
         return redirect()->route('clientes.index')
             ->with('success', 'Cliente deleted successfully');
     }
+    public function buscar()
+    {
+        return view('cliente.buscar');
+    }
+    public function resultados(Request $request)
+    {
+        // Recuperar el valor de búsqueda desde la solicitud
+        $search = $request->input('search');
+
+        // Realizar la lógica de búsqueda según tus necesidades
+        $clientes = Cliente::where('nombre_cliente', 'LIKE', "%$search%")
+            ->orWhere('dpi_cliente', 'LIKE', "%$search%")
+            ->orWhere('id', $search)
+            ->get();
+
+        // Pasar los resultados de la búsqueda a la vista resultados.blade.php
+        return view('cliente.buscar', compact('clientes'));
+    }
+
+
 }

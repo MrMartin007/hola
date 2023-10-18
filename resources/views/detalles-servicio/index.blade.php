@@ -1,9 +1,7 @@
-@extends('adminlte::page')
-@section('title', 'Dashboard')
-
+@extends('layouts.app')
 
 @section('template_title')
-    Asignar Servicio
+    Detalles Servicio
 @endsection
 
 @section('content')
@@ -15,11 +13,11 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Asignar Servicio') }}
+                                {{ __('Detalles Servicio') }}
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('asignar-servicios.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                <a href="{{ route('detalles-servicios.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Create New') }}
                                 </a>
                               </div>
@@ -36,29 +34,26 @@
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
-                                        <th>No de servicio</th>
-										<th>Clientes </th>
-                                        <th>tecnico </th>
-                                        <th>estado </th>
-
-
+                                        <th>No</th>
+                                        
+										<th>Detalle Servicio</th>
+										<th>Servicios Id</th>
 
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($asignarServicios as $asignarServicio)
+                                    @foreach ($detallesServicios as $detallesServicio)
                                         <tr>
-
-                                            <td>{{ $asignarServicio->id }}</td>
-                                            <td>{{ $asignarServicio->cliente->nombre_cliente }}</td>
-                                            <td>{{ $asignarServicio->tecnico->nombre_tecnico }}</td>
-                                            <td>{{ $asignarServicio->estado->estado }}</td>
-
-
+                                            <td>{{ ++$i }}</td>
+                                            
+											<td>{{ $detallesServicio->detalle_servicio }}</td>
+											<td>{{ $detallesServicio->servicios_id }}</td>
 
                                             <td>
-                                                <form action="{{ route('asignar-servicios.destroy',$asignarServicio->id) }}" method="POST">
+                                                <form action="{{ route('detalles-servicios.destroy',$detallesServicio->id) }}" method="POST">
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('detalles-servicios.show',$detallesServicio->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('detalles-servicios.edit',$detallesServicio->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
@@ -71,7 +66,7 @@
                         </div>
                     </div>
                 </div>
-                {!! $asignarServicios->links() !!}
+                {!! $detallesServicios->links() !!}
             </div>
         </div>
     </div>

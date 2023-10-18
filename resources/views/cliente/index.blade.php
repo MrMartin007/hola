@@ -34,33 +34,30 @@
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
-                                        <th>No. Cuenta</th>
-										<th>Nombre</th>
-										<th>Apellido</th>
-                                        <th>Dpi</th>
-										<th>Direccion</th>
-										<th>Correo</th>
-										<th>Telefono</th>
-										<th>Nit</th>
-
-                                        <th></th>
+                                        <th>No. Cuenta</th> <!-- Agregar la clase small para el encabezado -->
+                                        <th >Nombre</th>
+                                        <th>Apellido</th>
+                                        <th >Dpi</th>
+                                        <th >Direccion</th>
+                                        <th >Correo</th>
+                                        <th >Telefono</th>
+                                        <th >Nit</th>
+                                        <th >  Accion </th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($clientes as $cliente)
                                         <tr>
-                                            <td>{{ $cliente->id }}</td>
-											<td>{{ $cliente->nombre_cliente }}</td>
-											<td>{{ $cliente->apellido_cliente }}</td>
-                                            <td>{{ $cliente->dpi_cliente }}</td>
-											<td>{{ $cliente->direccion_cliente }}</td>
-											<td>{{ $cliente->correo_cliente }}</td>
-											<td>{{ $cliente->telefono_cliente }}</td>
-											<td>{{ $cliente->nit_cliente }}</td>
-
-                                            <td>
+                                            <td class="small">{{ $cliente->id }}</td> <!-- Agregar la clase small para las celdas de la tabla -->
+                                            <td class="small">{{ $cliente->nombre_cliente }}</td>
+                                            <td class="small">{{ $cliente->apellido_cliente }}</td>
+                                            <td class="small">{{ $cliente->dpi_cliente }}</td>
+                                            <td class="small">{{ $cliente->direccion_cliente }}</td>
+                                            <td class="small">{{ $cliente->correo_cliente }}</td>
+                                            <td class="small">{{ $cliente->telefono_cliente }}</td>
+                                            <td class="small">{{ $cliente->nit_cliente }}</td>
+                                            <td >
                                                 <form action="{{ route('clientes.destroy',$cliente->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('clientes.show',$cliente->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
                                                     <a class="btn btn-sm btn-success" href="{{ route('clientes.edit',$cliente->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
                                                     @csrf
                                                     @method('DELETE')

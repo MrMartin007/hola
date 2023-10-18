@@ -8,8 +8,7 @@ use Illuminate\Database\Eloquent\Model;
  * Class AsignarServicio
  *
  * @property $id
- * @property $detalle_servicio
- * @property $total
+ * @property $detalles_servicios_id
  * @property $clientes_id
  * @property $estados_id
  * @property $tecnicos_id
@@ -21,6 +20,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property Estado $estado
  * @property Servicio $servicio
  * @property Tecnico $tecnico
+ * @property DetallesServicio $detallesServicio
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
@@ -28,8 +28,7 @@ class AsignarServicio extends Model
 {
 
     static $rules = [
-		'detalle_servicio' => '',
-		'total' => 'required',
+		'detalles_servicios_id' => '',
 		'clientes_id' => '',
 		'estados_id' => '',
 		'tecnicos_id' => '',
@@ -43,7 +42,7 @@ class AsignarServicio extends Model
      *
      * @var array
      */
-    protected $fillable = ['detalle_servicio','total','clientes_id','estados_id','tecnicos_id','servicios_id'];
+    protected $fillable = ['detalles_servicios_id','total','clientes_id','estados_id','tecnicos_id','servicios_id'];
 
 
     /**
@@ -76,6 +75,14 @@ class AsignarServicio extends Model
     public function tecnico()
     {
         return $this->hasOne('App\Models\Tecnico', 'id', 'tecnicos_id');
+    }
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function detallesServicio()
+    {
+        return $this->hasOne('App\Models\DetallesServicio', 'id', 'detalles_servicios_id  ');
+
     }
 
 

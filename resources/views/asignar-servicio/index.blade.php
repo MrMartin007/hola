@@ -52,12 +52,10 @@
                                     @foreach ($asignarServicios as $asignarServicio)
                                         <tr>
                                             <td>{{ $asignarServicio->id }}</td>
-                                            <td>{{ $asignarServicio->cliente->nombre_cliente }}</td>
-                                            <td>{{ $asignarServicio->servicio->nombre_servicio }}</td>
-											<td>{{ $asignarServicio->detalle_servicio }}</td>
-											<td>{{ $asignarServicio->total }}</td>
-
-
+                                            <td>{{ $asignarServicio->nombre_cliente }}</td>
+                                            <td>{{ $asignarServicio->servicios_id }}</td>
+                                            <td>{{ $asignarServicio->detalle_servicio}}</td>
+                                            <td>{{ $asignarServicio->precio}}</td>
 
                                             <td>
                                                 <form action="{{ route('asignar-servicios.destroy',$asignarServicio->id) }}" method="POST">

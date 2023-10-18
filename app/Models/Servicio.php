@@ -18,7 +18,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Servicio extends Model
 {
-    
+
     static $rules = [
 		'nombre_servicio' => 'required',
 		'descripcion_servicio' => 'required',
@@ -34,5 +34,8 @@ class Servicio extends Model
     protected $fillable = ['nombre_servicio','descripcion_servicio'];
 
 
-
+    public function detallesServicio()
+    {
+        return $this->hasMany(DetallesServicio::class);
+    }
 }

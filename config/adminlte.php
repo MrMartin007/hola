@@ -304,8 +304,8 @@ return [
                     'icon'    => 'fa fa-user-plus',
                 ],
                 [
-                    'text' => 'Clientes Registrados',
-                    'url'  => '/clientes',
+                    'text' => 'Consultar Cliente',
+                    'url'  => '/buscar',
                     'icon'    => 'fa fa-list',
 
                 ],
@@ -335,12 +335,7 @@ return [
                     'url'  => '/tecnicos/create',
                     'icon'    => 'fa fa-user-plus',
                 ],
-                [
-                    'text' => 'Tecnicos Registrados',
-                    'url'  => '/tecnicos',
-                    'icon'    => 'fa fa-list',
 
-                ],
             ],
 
         ],
@@ -373,8 +368,20 @@ return [
             'icon'    => 'fa fa-list',
             'submenu' => [
                 [
-                    'text' => 'Ventas',
-                    'url'  => '/ventas',
+                    'text' => 'Clientes Registrados',
+                    'url'  => '/clientes',
+                    'icon'    => 'fa fa-list',
+
+                ],
+                [
+                    'text' => 'Tecnicos Registrados',
+                    'url'  => '/tecnicos',
+                    'icon'    => 'fa fa-list',
+
+                ],
+                [
+                    'text' => 'Reporte de clientes',
+                    'url'  => '/clientes',
                     'icon'    => 'fa fa-list',
 
                 ],

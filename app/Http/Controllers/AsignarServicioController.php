@@ -7,7 +7,9 @@ use App\Models\Cliente;
 use App\Models\Servicio;
 use App\Models\Tecnico;
 use App\Models\estado;
+use App\Models\DetallesServicio;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class AsignarServicioController
@@ -22,11 +24,17 @@ class AsignarServicioController extends Controller
      */
     public function index()
     {
-        $asignarServicios = AsignarServicio::paginate();
-        $clientes = Cliente::pluck('nombre_cliente', 'id');
-        $servicios = Servicio::pluck('nombre_servicio', 'id');
+        $detallesServicio = DetallesServicio::all();
+        $clientes = Cliente::all();
+        $asignarServicios = DB::table('asignar_servicios')
+            ->join('detalles_servicios','asignar_servicios.detalles_servicios_id', '=', 'detalles_servicios.id')
+            ->join('clientes','asignar_servicios.clientes_id', '=', 'clientes.id')
 
-        return view('asignar-servicio.index', compact('asignarServicios','clientes','servicios'))
+            ->select('asignar_servicios.*','detalles_servicios.detalle_servicio','clientes.nombre_cliente','detalles_servicios.precio')
+        ->paginate(10);//el numero de filas
+
+
+        return view('asignar-servicio.index', compact('asignarServicios','clientes','detallesServicio'))
             ->with('i', (request()->input('page', 1) - 1) * $asignarServicios->perPage());
     }
 
@@ -38,9 +46,11 @@ class AsignarServicioController extends Controller
         $servicios = Servicio::pluck('nombre_servicio', 'id');
         $estado = Estado::pluck('estado', 'id');
         $tecnico = Tecnico::pluck('nombre_tecnico', 'id');
+        $detallesServicio = DetallesServicio::pluck('detalle_servicio', 'id');
 
 
-        return view('asignar-servicio.index_asig', compact('asignarServicios','clientes','servicios','estado','tecnico'))
+
+        return view('asignar-servicio.index_asig', compact('asignarServicios','clientes','servicios','estado','tecnico','detallesServicio'))
             ->with('i', (request()->input('page', 1) - 1) * $asignarServicios->perPage());
     }
 
@@ -54,7 +64,9 @@ class AsignarServicioController extends Controller
         $asignarServicio = new AsignarServicio();
         $clientes = Cliente::pluck('nombre_cliente', 'id');
         $servicios = Servicio::pluck('nombre_servicio', 'id');
-        return view('asignar-servicio.create', compact('asignarServicio','clientes','servicios'));
+        $detallesServicio = DetallesServicio::all()->groupBy('servicios_id');
+
+        return view('asignar-servicio.create', compact('asignarServicio', 'clientes', 'servicios', 'detallesServicio'));
     }
 
     /**
@@ -99,8 +111,10 @@ class AsignarServicioController extends Controller
         $servicios = Servicio::pluck('nombre_servicio', 'id');
         $estado = Estado::pluck('estado', 'id');
         $tecnico = Tecnico::pluck('nombre_tecnico', 'id');
+        $detallesServicio = DetallesServicio::pluck('detalle_servicio', 'id');
 
-        return view('asignar-servicio.edit', compact('asignarServicio','clientes','servicios','estado','tecnico'));
+
+        return view('asignar-servicio.edit', compact('asignarServicio','clientes','servicios','estado','tecnico','detallesServicio'));
     }
 
     /**
@@ -143,28 +157,13 @@ class AsignarServicioController extends Controller
     {
         $asignarServicio = AsignarServicio::find($id);
         $clientes = Cliente::pluck('nombre_cliente', 'id');
-        $servicios = Servicio::pluck('nombre_servicio', 'id');
         $estado = Estado::pluck('estado', 'id');
         $tecnico = Tecnico::pluck('nombre_tecnico', 'id');
+        $detallesServicio = DetallesServicio::pluck('detalle_servicio', 'id');
+        $detallesServicios = DetallesServicio::pluck('precio', 'id');
 
-        return view('asignar-servicio.edit2', compact('asignarServicio','clientes','servicios','estado','tecnico'));
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  AsignarServicio $asignarServicio
-     * @return \Illuminate\Http\Response
-     */
-    public function updateasig(Request $request, AsignarServicio $asignarServicio)
-    {
-        request()->validate(AsignarServicio::$rules);
-
-        $asignarServicio->update($request->all());
-
-        return redirect()->route('asignar-servicios.index')
-            ->with('success', 'AsignarServicio updated successfully');
+        return view('asignar-servicio.edit2', compact('asignarServicio','clientes','estado','tecnico','detallesServicio','detallesServicios'));
     }
 }
 
