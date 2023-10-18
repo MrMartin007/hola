@@ -13,14 +13,14 @@ class CreateAsignarServiciosTable extends Migration
      */
     public function up()
     {
-        Schema::create('asignar_servicios', function (Blueprint $table) {
+        Schema::create('nombre_de_la_tabla', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('servicio');
-            $table->string('detalle_servicio');
-            $table->string('total');
-            $table->foreignId('clientes_id')->constrained('clientes');
-            $table->foreignId('estados_id')->constrained('estados');
-            $table->foreignId('tecnicos_id')->constrained('tecnicos');
+            $table->string('total'); // Columna que puede ser nula
+            $table->foreignId('clientes_id')->nullable()->constrained('clientes'); // Clave foránea que puede ser nula
+            $table->foreignId('estados_id')->nullable()->constrained('estados'); // Clave foránea que puede ser nula
+            $table->foreignId('tecnicos_id')->nullable()->constrained('tecnicos'); // Clave foránea que puede ser nula
+            $table->foreignId('detalles_servicios_id')->nullable()->constrained('detalles_servicios'); // Clave foránea que puede ser nula
             $table->timestamps();
         });
     }
