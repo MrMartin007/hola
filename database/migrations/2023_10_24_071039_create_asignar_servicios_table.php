@@ -13,7 +13,7 @@ class CreateAsignarServiciosTable extends Migration
      */
     public function up()
     {
-        Schema::create('nombre_de_la_tabla', function (Blueprint $table) {
+        Schema::create('asignar_servicios', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('servicio');
             $table->string('total'); // Columna que puede ser nula
