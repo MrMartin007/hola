@@ -35,7 +35,6 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        
 										<th>Detalle Servicio</th>
 										<th>Servicios Id</th>
 
@@ -46,7 +45,7 @@
                                     @foreach ($detallesServicios as $detallesServicio)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            
+
 											<td>{{ $detallesServicio->detalle_servicio }}</td>
 											<td>{{ $detallesServicio->servicios_id }}</td>
 

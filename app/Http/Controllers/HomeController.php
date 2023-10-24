@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AsignarServicio;
+use App\Models\Tecnico;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +25,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        // Realiza una consulta para obtener el número de servicios asignados
+        $numeroDeServiciosAsignados = AsignarServicio::count(); // Esto cuenta el número de registros en la tabla AsignarServicios
+
+        $numeroDeTecnicos = Tecnico::count(); // Esto cuenta el número de registros en la tabla AsignarServicios
+
+        return view('home', ['numeroDeServiciosAsignados' => $numeroDeServiciosAsignados,
+            'numeroDeTecnicos' => $numeroDeTecnicos,
+
+        ]);
     }
 }

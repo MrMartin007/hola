@@ -44,3 +44,5 @@ Route::get('/buscar', [ClienteController::class, 'buscar'])->name('buscar');
 Route::get('/resultados', [ClienteController::class, 'resultados'])->name('resultados');
 
 Route::get('/cargar-detalles-servicio/{servicioId}', 'AsignarServicioController@cargarDetallesServicio');
+
+Route::put('/marcar-completado/{id}', [AsignarServicioController::class,'marcarComoCompletado'])->name('marcar-completado');

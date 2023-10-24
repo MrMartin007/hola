@@ -306,7 +306,7 @@ return [
                 [
                     'text' => 'Consultar Cliente',
                     'url'  => '/buscar',
-                    'icon'    => 'fa fa-list',
+                    'icon'    => 'fa fa-search',
 
                 ],
             ],
@@ -348,18 +348,6 @@ return [
                     'url'  => '/asignar-servicios/create',
                     'icon'    => 'fa fa-plus-circle',
                 ],
-                [
-                    'text' => ' Registrados',
-                    'url'  => '/asignar-servicios',
-                    'icon'    => 'fa fa-list',
-
-                ],
-                [
-                    'text' => ' Tecnicos Asignados',
-                    'url'  => '/index_asig',
-                    'icon'    => 'fa fa-list',
-
-                ],
             ],
 
         ],
@@ -368,21 +356,27 @@ return [
             'icon'    => 'fa fa-list',
             'submenu' => [
                 [
-                    'text' => 'Clientes Registrados',
-                    'url'  => '/clientes',
-                    'icon'    => 'fa fa-list',
+                    'text' => ' Servicios Registrados',
+                    'url'  => '/asignar-servicios',
+                    'icon'    => 'fa fa-address-card',
 
                 ],
                 [
-                    'text' => 'Tecnicos Registrados',
+                    'text' => ' Tecnicos Asignados',
+                    'url'  => '/index_asig',
+                    'icon'    => 'fa fa-cogs',
+
+                ],
+                [
+                    'text' => 'Tecnicos Disponibles',
                     'url'  => '/tecnicos',
-                    'icon'    => 'fa fa-list',
+                    'icon'    => 'fa fa-user-cog',
 
                 ],
                 [
                     'text' => 'Reporte de clientes',
                     'url'  => '/clientes',
-                    'icon'    => 'fa fa-list',
+                    'icon'    => 'fa fa-user-circle',
 
                 ],
             ],

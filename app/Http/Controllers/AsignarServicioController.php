@@ -40,17 +40,18 @@ class AsignarServicioController extends Controller
 
     public function index_asig()
     {
+        $estados = [1, 3]; // Valores de estados_id que deseas obtener
 
-        $asignarServicios = AsignarServicio::where('estados_id', 1)->paginate();
+        $asignarServicios = AsignarServicio::whereIn('estados_id', $estados)->paginate();
         $clientes = Cliente::pluck('nombre_cliente', 'id');
         $servicios = Servicio::pluck('nombre_servicio', 'id');
         $estado = Estado::pluck('estado', 'id');
         $tecnico = Tecnico::pluck('nombre_tecnico', 'id');
-        $detallesServicio = DetallesServicio::pluck('detalle_servicio', 'id');
 
 
 
-        return view('asignar-servicio.index_asig', compact('asignarServicios','clientes','servicios','estado','tecnico','detallesServicio'))
+
+        return view('asignar-servicio.index_asig', compact('asignarServicios','clientes','servicios','estado','tecnico'))
             ->with('i', (request()->input('page', 1) - 1) * $asignarServicios->perPage());
     }
 
@@ -64,9 +65,9 @@ class AsignarServicioController extends Controller
         $asignarServicio = new AsignarServicio();
         $clientes = Cliente::pluck('nombre_cliente', 'id');
         $servicios = Servicio::pluck('nombre_servicio', 'id');
-        $detallesServicio = DetallesServicio::all()->groupBy('servicios_id');
+        $DetallesServicio = DetallesServicio::all()->groupBy('servicios_id');
 
-        return view('asignar-servicio.create', compact('asignarServicio', 'clientes', 'servicios', 'detallesServicio'));
+        return view('asignar-servicio.create', compact('asignarServicio', 'clientes', 'servicios', 'DetallesServicio'));
     }
 
     /**
@@ -164,6 +165,13 @@ class AsignarServicioController extends Controller
 
 
         return view('asignar-servicio.edit2', compact('asignarServicio','clientes','estado','tecnico','detallesServicio','detallesServicios'));
+    }
+    public function marcarComoCompletado(AsignarServicio $id)
+    {
+        $id->update(['estados_id' => 3]);
+
+        return redirect()->route('index_asig')
+            ->with('success', 'El servicio ha sido marcado como completado.');
     }
 }
 

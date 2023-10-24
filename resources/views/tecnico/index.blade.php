@@ -2,7 +2,7 @@
 @section('title', 'Dashboard')
 
 @section('template_title')
-    Tecnico
+    Tecnicos Registrados
 @endsection
 
 @section('content')
@@ -11,18 +11,13 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-
-                            <span id="card_title">
-                                {{ __('Tecnico') }}
-                            </span>
-
-                             <div class="float-right">
-                                <a href="{{ route('tecnicos.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
-                                </a>
-                              </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; flex-direction: column;">
+    <span id="card_title" style="font-size: 24px; font-weight: bold; margin: auto;">
+        {{ __('Tecnicos Disponibles') }}
+    </span>
                         </div>
+
+
                     </div>
                     @if ($message = Session::get('success'))
                         <div class="alert alert-success">
@@ -32,10 +27,9 @@
 
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-striped table-hover">
+                            <table class="table table-bordered">
                                 <thead class="thead">
-                                    <tr>
-                                        <th>No</th>
+                                <tr>
 
 										<th>Nombre Tecnico</th>
 										<th>Apellido Tecnico</th>
@@ -43,27 +37,23 @@
 										<th>Correo Tecnico</th>
 										<th>Telefono Tecnico</th>
 
-                                        <th></th>
+                                        <th>Accion </th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($tecnicos as $tecnico)
                                         <tr>
-                                            <td>{{ ++$i }}</td>
-
 											<td>{{ $tecnico->nombre_tecnico }}</td>
 											<td>{{ $tecnico->apellido_tecnico }}</td>
 											<td>{{ $tecnico->direccion_tecnico }}</td>
 											<td>{{ $tecnico->correo_tecnico }}</td>
 											<td>{{ $tecnico->telefono_tecnico }}</td>
-
                                             <td>
                                                 <form action="{{ route('tecnicos.destroy',$tecnico->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('tecnicos.show',$tecnico->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('tecnicos.edit',$tecnico->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
+                                                    <a class="btn btn-warning btn-sm" href="{{ route('tecnicos.edit',$tecnico->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
                                                 </form>
                                             </td>
                                         </tr>

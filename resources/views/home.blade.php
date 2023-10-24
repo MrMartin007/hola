@@ -43,7 +43,9 @@
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-uppercase mb-1" style="color:#7F135FFF ">
                                         Servicios Asignados</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800"> 392 </div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800" id="numero-servicios-asignados">
+                                        {{ $numeroDeServiciosAsignados }}
+                                    </div>
                                 </div>
                                 <div class="col-auto">
                                     <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -61,7 +63,9 @@
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold  text-uppercase mb-1" style="color: #06065DFF">
                                         Tecnicos Disponibles</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800"> 15 </div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800" id="numeroDeTecnicos">
+                                        {{ $numeroDeTecnicos }}
+                                    </div>
                                 </div>
                                 <div class="col-auto">
                                     <i class="fas fa-users-cog fa-2x text-gray-300"></i>

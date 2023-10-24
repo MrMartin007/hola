@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRUD_L^8-@yield('title')</title> <!--nombre de la pagina-->
+    <title>Cable Color's -@yield('title')</title> <!--nombre de la pagina-->
     <!--Estilos de Boopstrap y CSS-->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -18,23 +18,12 @@
     <script src="https://use.fontawesome.com/releases/vVERSION/js/all.js" data-mutate-approach="sync"></script>
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 
 
 </head>
 
-<body style="background-color: #E8F8F5;">
-<nav class="navbar navbar-expand-lg navbar-light bg-p-3 mb-2 text-white" style="background-color: #2b2f32;">
-    <!--Logo de navbar-->
-    <a class="navbar-brand" href="{{url('/')}}"><img src="https://airpak.cr/wp-content/uploads/sites/5/2020/08/CABLE-COLOR-LOGO.png" alt="" width="200" class="rounded-circle"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <ul class="w-1/2 px-16 ml-auto flex justify-end pt-1">
-
-
-    </ul>
-</nav>
-</body>
 
 @yield('content')
 

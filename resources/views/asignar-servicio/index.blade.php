@@ -3,7 +3,7 @@
 
 
 @section('template_title')
-    Asignar Servicio
+    Servicios Registrados
 @endsection
 
 @section('content')
@@ -15,14 +15,8 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Asignar Servicio') }}
+                                {{ __(' Servicios Registrados') }}
                             </span>
-
-                             <div class="float-right">
-                                <a href="{{ route('asignar-servicios.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
-                                </a>
-                              </div>
                         </div>
                     </div>
                     @if ($message = Session::get('success'))
@@ -58,11 +52,14 @@
                                             <td>{{ $asignarServicio->precio}}</td>
 
                                             <td>
+                                                @if($asignarServicio->estados_id == 2)
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('edit2',$asignarServicio->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Asignar Tecnico ') }}</a>                                                @endif
+                                            </td>
+                                            <td>
                                                 <form action="{{ route('asignar-servicios.destroy',$asignarServicio->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('edit2',$asignarServicio->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Asignar Tecnico ') }}</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
                                                 </form>
                                             </td>
                                         </tr>

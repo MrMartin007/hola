@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AsignarServicio;
 use App\Models\Cliente;
+use App\Models\DetallesServicio;
+use App\Models\estado;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -118,12 +121,13 @@ class ClienteController extends Controller
 
         // Realizar la lógica de búsqueda según tus necesidades
         $clientes = Cliente::where('nombre_cliente', 'LIKE', "%$search%")
-            ->orWhere('dpi_cliente', 'LIKE', "%$search%")
-            ->orWhere('id', $search)
-            ->get();
+            ->orWhere('dpi_cliente', $search)->get();
 
+        $clienteIds = $clientes->pluck('id');
+        $estado = Estado::pluck('estado', 'id');
+        $asignar = AsignarServicio::whereIn('clientes_id', $clienteIds)->get();
         // Pasar los resultados de la búsqueda a la vista resultados.blade.php
-        return view('cliente.buscar', compact('clientes'));
+        return view('cliente.buscar', compact('clientes','asignar','estado'));
     }
 
 
