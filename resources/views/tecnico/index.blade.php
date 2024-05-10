@@ -27,7 +27,7 @@
 
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-bordered">
+                            <table  class="table table-bordered">
                                 <thead class="thead">
                                 <tr>
 
@@ -68,3 +68,4 @@
         </div>
     </div>
 @endsection
+

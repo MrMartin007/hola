@@ -49,8 +49,6 @@ class AsignarServicioController extends Controller
         $tecnico = Tecnico::pluck('nombre_tecnico', 'id');
 
 
-
-
         return view('asignar-servicio.index_asig', compact('asignarServicios','clientes','servicios','estado','tecnico'))
             ->with('i', (request()->input('page', 1) - 1) * $asignarServicios->perPage());
     }

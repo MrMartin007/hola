@@ -1,5 +1,4 @@
 @extends('adminlte::page')
-
 @section('title', 'Cable Colors')
 
 @section('content_header')
